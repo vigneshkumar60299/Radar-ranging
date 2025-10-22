@@ -1,5 +1,5 @@
-# Radar-ranging
-EVALUATION OF RADAR RANGE USING PYTHON
+
+#EVALUATION OF RADAR RANGE USING PYTHON
 
 
 
@@ -12,6 +12,7 @@ To calculate the maximum range of a radar system using the Radar Range Equation 
 Theory:
 
 The Radar Range Equation is a fundamental formula used in radar system design to determine the maximum range at which a radar can detect a target. It is given by:
+
 
 
 
