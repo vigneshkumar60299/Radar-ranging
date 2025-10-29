@@ -1,6 +1,6 @@
 # EVALUATION OF RADAR RANGE USING PYTHON
 
-Aim:
+##Aim:
 To calculate the maximum range of a radar system using the Radar Range Equation and verify the results through Python programming.
 
 Theory:
@@ -45,6 +45,8 @@ plot(10*log10(Pt_array), 10*log10(Pr_pt));
 subplot(3,1,3);  
 plot(G_dB_array, 10*log10(Pr_gain));
 ```
+
+
 
 
 
