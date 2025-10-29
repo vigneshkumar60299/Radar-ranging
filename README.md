@@ -21,6 +21,7 @@ Procedure
 
 
 PROGRAM
+```
 c = 3e8;  
 f = 10e9;  
 lambda = c / f;  
@@ -42,7 +43,9 @@ plot(R/1000, 10*log10(Pr_range));
 subplot(3,1,2);  
 plot(10*log10(Pt_array), 10*log10(Pr_pt));  
 subplot(3,1,3);  
-plot(G_dB_array, 10*log10(Pr_gain));  
+plot(G_dB_array, 10*log10(Pr_gain));
+```
+
 
 
 Result:
