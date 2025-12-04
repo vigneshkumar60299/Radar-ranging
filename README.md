@@ -22,37 +22,59 @@ The Radar Range Equation is a fundamental formula used in radar system design to
 
 ## PROGRAM
 ```
-c = 3e8;  
-f = 10e9;  
-lambda = c / f;  
-sigma = 1;  
-L = 1;  
-G_dB = 30;  
-G = 10^(G_dB/10);  
-Pt = 1e3;  
-R = linspace(1e2, 1e5, 500);  
-Pr_range = (Pt * G^2 * lambda^2 * sigma) ./ ((4 * %pi)^3 * R.^4 * L);  
-Pt_array = linspace(1, 1e5, 500);  
-R_fixed = 1e4;  
-Pr_pt = (Pt_array * G^2 * lambda^2 * sigma) ./ ((4 * %pi)^3 * R_fixed^4 * L);  
-G_dB_array = linspace(0, 50, 500);   
-G_array = 10.^(G_dB_array / 10);  
-Pr_gain = (Pt * G_array.^2 * lambda^2 * sigma) ./ ((4 * %pi)^3 * R_fixed^4 * L);  
-subplot(3,1,1);  
-plot(R/1000, 10*log10(Pr_range));  
-subplot(3,1,2);  
-plot(10*log10(Pt_array), 10*log10(Pr_pt));  
-subplot(3,1,3);  
-plot(G_dB_array, 10*log10(Pr_gain));
+lambda = 0.03;
+sigma  = 1;
+
+Pt_vals = [320 280 240 200 160];
+Gt_const = 35;
+Pm_const = 1e-13;
+
+Rmax_Pt = ((Pt_vals .* (Gt_const.^2) .* (lambda.^2) .* sigma) ./ (((4*%pi).^3) .* Pm_const)).^(1/4);
+
+Gt_vals  = [10 20 30 40 50];
+Pt_const = 2;
+Pm_const = 1e-13;
+
+Rmax_Gt = ((Pt_const .* (Gt_vals.^2) .* (lambda.^2) .* sigma) ./ (((4*%pi).^3) .* Pm_const)).^(1/4);
+
+Pm_vals  = [1e-15 5e-15 1e-14 5e-14 1e-13];
+Pt_const = 2;
+Gt_const = 35;
+
+Rmax_Pm = ((Pt_const .* (Gt_const.^2) .* (lambda.^2) .* sigma) ./ (((4*%pi).^3) .* Pm_vals)).^(1/4);
+
+clf();
+
+subplot(3,1,1);
+plot(Pt_vals, Rmax_Pt, 'r', 'LineWidth', 2);
+
+
+subplot(3,1,2);
+plot(Gt_vals, Rmax_Gt, 'g', 'LineWidth', 2);
+
+
+subplot(3,1,3);
+plot(Pm_vals, Rmax_Pm, 'b', 'LineWidth', 2);
+
+disp("Pt variation  ->  [Pt , Rmax]");
+disp([Pt_vals'  Rmax_Pt']);
+
+disp("Gt variation  ->  [Gt , Rmax]");
+disp([Gt_vals'  Rmax_Gt']);
+
+disp("Pm variation  ->  [Pm , Rmax]");
+disp([Pm_vals'  Rmax_Pm']);
 ```
 ## TABULATION
+![WhatsApp Image 2025-12-04 at 12 24 25_c2142148](https://github.com/user-attachments/assets/09ab782f-ea60-4119-8020-9fad2adde002)
 
 
 
 
 
 Result:
-<img width="1919" height="930" alt="Screenshot 2025-10-22 160007" src="https://github.com/user-attachments/assets/d7c26355-312a-4e12-bf5f-8b1d79decfc4" />
+<img width="1919" height="928" alt="Screenshot 2025-12-04 123044" src="https://github.com/user-attachments/assets/8ecf693f-6328-4ab6-8675-c0c00920b057" />
+
 
 
 
